@@ -1,13 +1,19 @@
 import React from 'react';
 
 export default class Rating extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       increasing: false,
       decreasing: false
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      increasing: this.props.rating < nextProps.rating,
+      decreasing: this.props.rating > nextProps.rating
+    })
   }
 
   render() {
